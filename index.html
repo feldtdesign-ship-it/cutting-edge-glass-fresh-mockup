@@ -94,14 +94,14 @@ body.menu-open .menu a{transform:none;opacity:1}
 .thumb .btn{min-height:50px;padding:0 10px}
 
 /* 1 · hero: touch the frosted glass */
-.hero{position:relative;height:100svh;min-height:560px;overflow:hidden;background:var(--ink);--x:50%;--y:46%;--r:0px;touch-action:pan-y}
+.hero{position:relative;min-height:100svh;display:flex;flex-direction:column;justify-content:flex-end;overflow:hidden;background:var(--ink);--x:50%;--y:46%;--r:0px;touch-action:pan-y}
 .hero .ph{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 40%}
 .hero .frost{position:absolute;inset:-4%;width:108%;height:108%;object-fit:cover;object-position:50% 40%;filter:blur(15px) brightness(1.12) contrast(.85);-webkit-mask-image:radial-gradient(circle at var(--x) var(--y),transparent 0,transparent calc(var(--r) * .55),#000 var(--r));mask-image:radial-gradient(circle at var(--x) var(--y),transparent 0,transparent calc(var(--r) * .55),#000 var(--r))}
 .hero .tint{position:absolute;inset:0;background:linear-gradient(180deg,rgba(5,6,6,.55),rgba(5,6,6,.1) 30%,rgba(5,6,6,.35) 55%,rgba(5,6,6,.92));pointer-events:none}
 .hero .ring{position:absolute;left:var(--x);top:var(--y);width:calc(var(--r) * 1.05);height:calc(var(--r) * 1.05);transform:translate(-50%,-50%);border-radius:50%;border:1.5px solid rgba(230,240,238,.55);box-shadow:inset 0 0 40px rgba(230,240,238,.18);pointer-events:none;opacity:var(--ro,1)}
-.hero .copy{position:absolute;left:0;right:0;bottom:0;padding:0 var(--pad) calc(28px + var(--safe));display:flex;flex-direction:column;gap:18px;pointer-events:none}
+.hero .copy{position:relative;z-index:2;padding:112px var(--pad) calc(28px + var(--safe));display:flex;flex-direction:column;gap:18px;pointer-events:none}
 .hero .copy a{pointer-events:auto}
-.hero h1{max-width:none;font-size:clamp(46px,13.8vw,140px)}
+.hero h1{max-width:none;font-size:clamp(40px,min(13.8vw,15svh),140px)}
 .hero h1 em{white-space:nowrap}
 .big.mid{font-size:clamp(44px,12.6vw,120px)}
 .step h3,.proj h3,.card h3{text-wrap:balance}
@@ -234,7 +234,6 @@ footer a:hover{color:#fff}
 
 /* wider screens: the same story, given more room */
 @media (min-width:760px){
-  .hero .copy{flex-direction:row;align-items:flex-end;justify-content:space-between;flex-wrap:wrap}
   .stats{grid-template-columns:repeat(3,1fr)}
   .stat{flex-direction:column;align-items:flex-start;border-top:0;border-left:1px solid var(--line);padding:46px var(--pad)}
   .stat:first-child{border-left:0}
