@@ -559,7 +559,7 @@ footer a:hover{color:#fff}
       const sp = clamp(-hb.top / hb.height, 0, 1);
       if (!touching && (!touched || t - idle > 2500)) { tx = W * (.5 + .27 * Math.sin(t / 1900)); ty = H * (.42 + .16 * Math.sin(t / 1400 + 1)); }
       x += (tx - x) * .14; y += (ty - y) * .14;
-      const base = Math.min(W, H) * (touching ? .8 : .62) * clamp(t / 1400, 0, 1);
+      const m = Math.min(W, H), base = (touching ? Math.min(m * .42, 300) : Math.min(m * .3, 190)) * clamp(t / 1400, 0, 1);
       const target = still ? 2000 : base + sp * Math.max(W, H) * 1.6;
       r += (target - r) * .09;
       hero.style.setProperty('--x', x.toFixed(1) + 'px'); hero.style.setProperty('--y', y.toFixed(1) + 'px'); hero.style.setProperty('--r', r.toFixed(1) + 'px');
