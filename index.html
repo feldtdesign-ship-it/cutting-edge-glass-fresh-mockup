@@ -74,6 +74,8 @@ section[id],header[id]{scroll-margin-top:64px}
 .top{position:fixed;top:0;left:0;right:0;z-index:60;display:flex;align-items:center;justify-content:space-between;height:64px;padding:0 var(--pad);transition:background .4s,backdrop-filter .4s}
 .top.solid{background:rgba(10,11,12,.86);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px)}
 .top .logo img{height:46px;width:auto}
+.top .logo{opacity:0;visibility:hidden;transform:translateY(-8px);transition:opacity .4s,transform .4s var(--ease),visibility .4s}
+.top.logo-on .logo,body.menu-open .top .logo{opacity:1;visibility:visible;transform:none}
 .top .right{display:flex;align-items:center;gap:10px}
 .mock{font-size:10.5px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--ink);background:var(--edge);padding:5px 8px;white-space:nowrap}
 .menubtn{width:48px;height:48px;display:grid;place-items:center;background:transparent;border:1.5px solid rgba(255,255,255,.7);cursor:pointer}
@@ -525,6 +527,7 @@ footer a:hover{color:#fff}
   fit(); addEventListener('resize', fit); addEventListener('load', fit);
   const onScroll = () => {
     topbar.classList.toggle('solid', scrollY > 40);
+    topbar.classList.toggle('logo-on', $('.hero .brand').getBoundingClientRect().bottom < 72);
     const eb = est.getBoundingClientRect();
     thumb.classList.toggle('show', scrollY > innerHeight * .6 && eb.top > innerHeight * .5);
     /* projects slide over each other */
